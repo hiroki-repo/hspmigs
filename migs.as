@@ -55,20 +55,29 @@ prm_1in=""+prm_1
 exist prm_1in
 strsize2=strsize
 if strsize2=-1{return 0}
-sdim ax,strsize2
-bload prm_1in,ax
-    pt_cs     = lpeek(ax, 16)
-    max_cs    = lpeek(ax, 20)
-    pt_ds     = lpeek(ax, 24)
-    max_ds    = lpeek(ax, 28)
-    pt_ot     = lpeek(ax, 32)
-    max_ot    = lpeek(ax, 36)
-    pt_fi     = lpeek(ax, 56)
-    max_fi    = lpeek(ax, 60)
+sdim ax1,strsize2
+bload prm_1in,ax1
+    pt_cs     = lpeek(ax1, 16)
+    max_cs    = lpeek(ax1, 20)
+    pt_ds     = lpeek(ax1, 24)
+    max_ds    = lpeek(ax1, 28)
+    pt_ot     = lpeek(ax1, 32)
+    max_ot    = lpeek(ax1, 36)
+    pt_fi     = lpeek(ax1, 56)
+    max_fi    = lpeek(ax1, 60)
     //dialog pt_fi
-programyegg=programyegg+max_cs*2
-//sdim programy,max_cs*2
-dupptr programy,varptr(programyx)+(programyegg-(max_cs*2)),max_cs*2,2
+//programy=""
+/*repeat max_cs*2
+programy=programy+" "
+loop*/
+//memset programymy,0,max_cs2,0
+//sdim programy,max_cs*2+strsize2
+//maxcsold=maxcsold+(max_cs*2)
+//sdim programy,maxcsold
+dupptr programy,varptr(programyx)+programyegg,(max_cs*2)+strsize2,2
+memcpy programy,ax1,strsize2,max_cs*2,0
+dupptr ax,varptr(programy)+(max_cs*2),strsize2,2
+programyegg=programyegg+(max_cs*2)+strsize2
 dupptr ot,varptr(ax)+pt_ot,max_ot
 dupptr ds,varptr(ax)+pt_ds,max_ds
 if max_fi!0{dupptr fi,varptr(ax)+pt_fi,max_fi}
