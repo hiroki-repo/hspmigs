@@ -28,7 +28,7 @@ prtest=*null
 ntaskid=cnt
 pos positionforxy(0,cnt),positionforxy(1,cnt)
 gsel positionforxy(2,cnt),0
-if lpeek(taskinglabeller(cnt),0)!0{gosub taskinglabeller(cmt)}
+if lpeek(taskinglabeller(cnt),0)!0{gosub taskinglabeller(cnt)}
 positionforxy(0,cnt)=ginfo(22)
 positionforxy(1,cnt)=ginfo(23)
 positionforxy(2,cnt)=ginfo(3)
@@ -40,7 +40,7 @@ lpoke ptrforwin,4*2,0
 switch lpeek(ptrforwin,4*1)
 case 0
 dupptr taskname,lpeek(ptrforwin,4*3),1024,2
-taskidnow=0:repeat 256:if lpeek(taskinglabeller(taskidnow),0)=0{break}else{taskidnow=taskidnow+1}:loop
+taskidnow=0:repeat 256:if lpeek(taskinglabeller(cnt),0)=0{taskidnow=cnt:break}:loop
 lpoke taskinglabeller(taskidnow),0,_faddproc(taskname):taskidnow=taskidnow+1
 swbreak
 case 1

@@ -12,6 +12,8 @@
     return ret
 //#global
 #deffunc formadgeinitfunc
+programyegg=0
+sdim programyx,10*1024*1024
 dim bikker,10000
 dim bikker2,10000
 dim bikker3,10000
@@ -64,7 +66,9 @@ bload prm_1in,ax
     pt_fi     = lpeek(ax, 56)
     max_fi    = lpeek(ax, 60)
     //dialog pt_fi
-sdim programy,max_cs*2
+programyegg=programyegg+max_cs*2
+//sdim programy,max_cs*2
+dupptr programy,varptr(programyx)+(programyegg-(max_cs*2)),max_cs*2,2
 dupptr ot,varptr(ax)+pt_ot,max_ot
 dupptr ds,varptr(ax)+pt_ds,max_ds
 if max_fi!0{dupptr fi,varptr(ax)+pt_fi,max_fi}
