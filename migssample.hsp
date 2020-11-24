@@ -1,0 +1,71 @@
+#include "migs.as"
+#include "kernel32.as"
+#uselib "crtdll.dll"
+#cfunc _kbhit "_kbhit"
+#cfunc _getch "_getch"
+hwnd2=gettime(6)+gettime(5)*60+gettime(4)*3600+gettime(3)*(3600*24)+gettime(2)*(3600*24*32)+gettime(1)*(3600*24*32*12)
+mapname="chinprocessam"+str(hwnd2)
+hMap=0
+CreateFileMappingA 0xFFFFFFFF, 0,0x40,0,800,varptr(mapname):hMap=stat
+MapViewOfFileEx hMap,0x000F001F,0,0,801,0x50000000:addrforvar=stat
+mapname="chinprocessamxxx"+str(hwnd2)
+dupptr ptrforwin,addrforvar,801,2
+prtest=*syscall
+taskidnow=0
+taskmax=256
+ldim taskinglabeller,taskmax
+dim positionforxy,4,taskmax
+dupptr btx,lpeek(prtest,0),256,2
+lpoke ptrforwin,4*0,lpeek(prtest,0)
+onexit gosub *endtheos
+tasknamer="init.ax"
+lpoke ptrforwin,4*1,0
+lpoke ptrforwin,4*3,varptr(tasknamer)
+gosub *syscall
+repeat
+repeat taskmax
+prtest=*null
+ntaskid=cnt
+pos positionforxy(0,cnt),positionforxy(1,cnt)
+gsel positionforxy(2,cnt),0
+if lpeek(taskinglabeller(cnt),0)!0{gosub taskinglabeller(cmt)}
+positionforxy(0,cnt)=ginfo(22)
+positionforxy(1,cnt)=ginfo(23)
+positionforxy(2,cnt)=ginfo(3)
+loop
+await
+loop
+*syscall
+lpoke ptrforwin,4*2,0
+switch lpeek(ptrforwin,4*1)
+case 0
+dupptr taskname,lpeek(ptrforwin,4*3),1024,2
+taskidnow=0:repeat 256:if lpeek(taskinglabeller(taskidnow),0)=0{break}else{taskidnow=taskidnow+1}:loop
+lpoke taskinglabeller(taskidnow),0,_faddproc(taskname):taskidnow=taskidnow+1
+swbreak
+case 1
+lpoke taskinglabeller(lpeek(ptrforwin,4*3)),0,0
+swbreak
+case 2
+lpoke ptrforwin,4*2,ntaskid
+swbreak
+case 3
+lpoke taskinglabeller(ntaskid),0,0
+swbreak
+case 4
+lpoke ptrforwin,4*2,_kbhit()
+swbreak
+case 5
+lpoke ptrforwin,4*2,_getch()
+swbreak
+case 6
+gosub *endtheos
+swbreak
+swend
+return
+*null
+return
+*endtheos
+CloseHandle hMap
+end
+return
