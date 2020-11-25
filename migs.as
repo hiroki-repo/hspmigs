@@ -257,9 +257,6 @@ funcnubgetstrxcab=0
         //type=type & 31
         //lopfist2bt+code
         //if type=1{/*if c & 0x8000 {*/
-        cnt2=cnt:repeat labeliees
-        if lpeek(labelinfofortranslated(labelingist+cnt),0)=cnt2{lpoke labelinfofortranslated(cnt+labelingist),0,ax2cnt+varptr(programy)}
-        loop
         //dialog type
         switch type & 31
         case 1
@@ -267,7 +264,7 @@ funcnubgetstrxcab=0
         if varigist<=code{varigistage=code}
         swbreak
         case 7
-        wpoke programy,ax2cnt-2,0x8000 or 1:if wpeek(saladeuyunidataforfm,4) &0x8000{suyni=lpeek(saladeuyunidataforfm,6)}else{suyni=wpeek(saladeuyunidataforfm,6)}:lpoke programy, ax2cnt,suyni:ax2cnt=ax2cnt+4:lpoke programy, ax2cnt,0x00280000:ax2cnt=ax2cnt+4:wpoke programy, ax2cnt,0x8004:ax2cnt=ax2cnt+2:lpoke programy, ax2cnt,code+labelingist:ax2cnt=ax2cnt+4:lpoke programy, ax2cnt,0x00290000:ax2cnt=ax2cnt+4
+        wpoke programy,ax2cnt-2,(c &0x7000)or (0x8000 or 1):if wpeek(saladeuyunidataforfm,4) &0x8000{suyni=lpeek(saladeuyunidataforfm,6)}else{suyni=wpeek(saladeuyunidataforfm,6)}:lpoke programy, ax2cnt,suyni:ax2cnt=ax2cnt+4:lpoke programy, ax2cnt,0x00280000:ax2cnt=ax2cnt+4:wpoke programy, ax2cnt,0x8004:ax2cnt=ax2cnt+2:lpoke programy, ax2cnt,code+labelingist:ax2cnt=ax2cnt+4:lpoke programy, ax2cnt,0x00290000:ax2cnt=ax2cnt+4
         //dupptr labelliesdumped@,varptr(programy)+ax2cnt-20,256
         //dialog suyni
         //lpoke labelinfofortranslated(code+labelingist),0,code+varptr(programy)
@@ -343,6 +340,9 @@ funcnubgetstrxcab=0
         //gosub *get_code_meaning
         /*output += refstr
         output += "\n"*/
+        cnt2=cnt:repeat labeliees
+        if lpeek(labelinfofortranslated(labelingist+cnt),0)=(cnt2+size)/2{lpoke labelinfofortranslated(cnt+labelingist),0,ax2cnt+varptr(programy)}
+        loop
         continue cnt + size
     loop
 labelingist=labelingist+labelingistage
