@@ -261,6 +261,7 @@ funcnubgetstrxcab=0
         switch type & 31
         case 1
         lpoke programy, ax2cnt,lopfist2bt+code+varigist+bribristringscale:ax2cnt=ax2cnt+4
+        logmes "var:"+str(code+varigist+bribristringscale)
         if varigist<=code{varigistage=code}
         swbreak
         case 7
@@ -345,6 +346,8 @@ funcnubgetstrxcab=0
         loop
         continue cnt + size
     loop
+    labelingistage=labeliees
+bribristringscaleold=bribristringscale
 labelingist=labelingist+labelingistage
 varigist=varigist+varigistage+bribristringscale
 funcnubgetstrxca=funcnubgetstrxca+funcnubgetstrxcab
