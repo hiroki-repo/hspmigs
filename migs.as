@@ -12,6 +12,7 @@
     return ret
 //#global
 #deffunc formadgeinitfunc
+bribristringscalestock=0
 programyegg=0
 sdim programyx,10*1024*1024
 dim bikker,10000
@@ -55,6 +56,8 @@ prm_1in=""+prm_1
 exist prm_1in
 strsize2=strsize
 if strsize2=-1{return 0}
+varigistage=0
+labelingistage=0
 sdim ax1,strsize2
 bload prm_1in,ax1
     pt_cs     = lpeek(ax1, 16)
@@ -78,8 +81,8 @@ dupptr programy,varptr(programyx)+programyegg,(max_cs*2)+strsize2,2
 memcpy programy,ax1,strsize2,max_cs*2,0
 dupptr ax,varptr(programy)+(max_cs*2),strsize2,2
 programyegg=programyegg+(max_cs*2)+strsize2
-dupptr ot,varptr(ax)+pt_ot,max_ot
-dupptr ds,varptr(ax)+pt_ds,max_ds
+if max_ot!0{dupptr ot,varptr(ax)+pt_ot,max_ot}
+if max_ds!0{dupptr ds,varptr(ax)+pt_ds,max_ds}
 if max_fi!0{dupptr fi,varptr(ax)+pt_fi,max_fi}
 dupptr ax2,varptr(ax)+pt_cs,max_cs
 
@@ -161,6 +164,9 @@ labeliees=0
 //:loop
 //cnt2=cnt:if bikker(bikkeramount-1)=cnt2/2{bikker2(bikkeramount)=(cnt2-bikker3(bikkeramount))}
 switch type & 31
+case 0
+if c&8000{ax2cnt=ax2cnt+4}else{ax2cnt=ax2cnt+2}
+swbreak
 case 1
 ax2cnt=ax2cnt+4
 swbreak
@@ -234,7 +240,7 @@ await 1
 funcnubgetstrxcab=0
     repeat max_cs
         c = wpeek(ax2, cnt)
-        wpoke programy,ax2cnt,c or 0x8000
+        if (c&31)=0{wpoke programy,ax2cnt,c}else{wpoke programy,ax2cnt,c or 0x8000}
         ax2cnt=ax2cnt+2
         size = 2
         type = c & 0x1fff
@@ -259,10 +265,13 @@ funcnubgetstrxcab=0
         //if type=1{/*if c & 0x8000 {*/
         //dialog type
         switch type & 31
+        case 0
+        if c&8000{lpoke programy,ax2cnt,code:ax2cnt=ax2cnt+4}else{wpoke programy,ax2cnt,code:ax2cnt=ax2cnt+2}
+        swbreak
         case 1
         lpoke programy, ax2cnt,lopfist2bt+code+varigist+bribristringscale:ax2cnt=ax2cnt+4
-        logmes "var:"+str(code+varigist+bribristringscale)
-        if varigist<=code{varigistage=code}
+        logmes "var(1):"+str(code+varigist+bribristringscale)
+        if varigistage<=code{varigistage=code}
         swbreak
         case 7
         wpoke programy,ax2cnt-2,(c &0x7000)or (0x8000 or 1):if wpeek(saladeuyunidataforfm,4) &0x8000{suyni=lpeek(saladeuyunidataforfm,6)}else{suyni=wpeek(saladeuyunidataforfm,6)}:lpoke programy, ax2cnt,suyni:ax2cnt=ax2cnt+4:lpoke programy, ax2cnt,0x00280000:ax2cnt=ax2cnt+4:wpoke programy, ax2cnt,0x8004:ax2cnt=ax2cnt+2:lpoke programy, ax2cnt,code+labelingist:ax2cnt=ax2cnt+4:lpoke programy, ax2cnt,0x00290000:ax2cnt=ax2cnt+4
@@ -270,7 +279,7 @@ funcnubgetstrxcab=0
         //dialog suyni
         //lpoke labelinfofortranslated(code+labelingist),0,code+varptr(programy)
         //labeliees=labeliees+1
-        if labelingist<=code{labelingistage=code}
+        if labelingistage<=code{labelingistage=code}
         swbreak
         case 11
         //wpoke programy, ax2cnt-2,c//:ax2cnt=ax2cnt+2
@@ -293,6 +302,7 @@ funcnubgetstrxcab=0
         case 2
         wpoke programy, ax2cnt-2,0x8001
         lpoke programy, ax2cnt,lopfist2bt+varidforprogramyuf+varigist:ax2cnt=ax2cnt+4
+        logmes "var(2):"+str(varidforprogramyuf+varigist)
         formadgevalsetid=varidforprogramyuf+varigist
         haxmdkx=""
         haxmdkx=formadge_get_cstr(ds, code)
@@ -309,6 +319,7 @@ funcnubgetstrxcab=0
         case 3
         wpoke programy, ax2cnt-2,0x8001
         lpoke programy, ax2cnt,lopfist2bt+varidforprogramyuf+varigist:ax2cnt=ax2cnt+4
+        logmes "var(3):"+str(varidforprogramyuf+varigist)
         formadgevalsetid=varidforprogramyuf+varigist
         haxmdkx=double(0)
         haxmdkx=formadge_get_double(ds, code)
@@ -317,7 +328,7 @@ funcnubgetstrxcab=0
         //dialog haxmdk
         formadgeaddr(0,formadgevalsetid)=varptr(ds)+code
         formadgeaddr(1,formadgevalsetid)=varsize(haxmdkx)
-        formadgeaddr(2,formadgevalsetid)=2
+        formadgeaddr(2,formadgevalsetid)=3
         gosub *formadgevarptrset
         varidforprogramyuf=varidforprogramyuf+1
         //(code+varigist)
@@ -346,10 +357,10 @@ funcnubgetstrxcab=0
         loop
         continue cnt + size
     loop
-    labelingistage=labeliees
-bribristringscaleold=bribristringscale
+    //labelingistage=labeliees
+bribristringscalestock=bribristringscalestock+bribristringscale
 labelingist=labelingist+labelingistage
-varigist=varigist+varigistage+bribristringscale
+varigist=varigist+varigistage+bribristringscale+1
 funcnubgetstrxca=funcnubgetstrxca+funcnubgetstrxcab
 boby=0
 boby=varptr(programy)
