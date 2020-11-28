@@ -40,7 +40,8 @@ dupptr saladeuyunidataforfm,lpeek(saladeuyuniaddr,0),256,2
 dim formadgeaddr,4,10000
 funcnubgetptr=*funcnumberget
 dupptr funcnubgetstr,lpeek(funcnubgetptr,0),256,2
-if wpeek(funcnubgetstr,4)&0x8000{funcnubgetstrxc=lpeek(funcnubgetstr,6)}else{funcnubgetstrxc=wpeek(funcnubgetstr,6)}
+if wpeek(funcnubgetstr,8)&0x8000{funcnubgetstrxc=lpeek(funcnubgetstr,10)}else{funcnubgetstrxc=wpeek(funcnubgetstr,10)}
+//dialog funcnubgetstrxc
 /*a="dramatic"
 b="I wanna to be a self generation code!"
 dupptr sgts,lpeek(sgt,0),256,2
@@ -91,8 +92,12 @@ ax2cnt=0
 labeliees=0
 nestive=1
 nestivate=0
+semilabelforfuncgettermax=0
+semilabelforfuncgetteri=0
 dim valimodxxxx,10,10000
 dim instrustical,10000,4
+dim labelforfuncgetter,10000
+dim semilabelforfuncgetter,10000
     repeat max_cs
         c = wpeek(ax2, cnt)
         //wpoke programy,ax2cnt,c & 0x8000
@@ -120,15 +125,19 @@ dim instrustical,10000,4
             //tp11xad=1
             nestive=nestive+1
         }
+        if type == 12 {
+	        semilabelforfuncgetter(semilabelforfuncgettermax)=code
+	        semilabelforfuncgettermax=semilabelforfuncgettermax+1
+	    }
             //instrustical(nestive-1,0)=instrustical(nestive-1,0)+1
         //if instrustically=skip_offset and tp11xad=1{instrustically=0:nestive=nestive+1:instrustical(nestive,2)=cnt+size:skip_offset=0}else{instrustical(nestive,0)=instrustical(nestive,0)+1:instrustically=instrustically+(size/2)}
         continue cnt + size
     loop
     nestivate=nestive
 //memcpy programy,ax,max_cs,0,pt_cs
-
 bribristringscale=0
 bikkerrroo=0
+funcnubgetstrxcative=0
 bikkeramount=1
 //slilicsce=0
 dim slilicsce,10000
@@ -221,6 +230,7 @@ loop*/
     instructicalll=instructicalll+1
 cnt2=cnt:repeat nestivate:if valimodxxxx(1,cnt)=(cnt2+size)/2{valimodxxxx(2,cnt)=ax2cnt}:loop
 cnt2=cnt:repeat nestivate:if valimodxxxx(0,cnt)=(cnt2+size)/2{logmes str(ax2cnt)+"\n"+str(valimodxxxx(2,cnt)):bikker2(valimodxxxx(3,cnt))=((ax2cnt-valimodxxxx(2,cnt))/2):bikkerrroo=bikkerrroo+bikker2(bikkeramount):if bikker2(bikkeramount)<0{bikker2(bikkeramount)=-bikker2(bikkeramount)}:skip_offset=0:bikkeramount=bikkeramount+1}:loop
+cnt2=cnt:repeat semilabelforfuncgettermax:if lpeek(ot,(lpeek(fi,((28*semilabelforfuncgetter(cnt))+0x14))*4))=(cnt2+size)/2{labelforfuncgetter(cnt)=ax2cnt}:loop
 //cnt2=cnt:repeat nestivate:if valimodxxxx(0,cnt)=skip_offset+((cnt2+size)/2){bikker2(bikkeramount-1)=((ax2cnt-valimodxxxx(2,cnt))/2)-(bikkerrroo/3.0)*2:bikkerrroo=bikkerrroo+bikker2(bikkeramount-1):if bikker2(bikkeramount-1)<0{bikker2(bikkeramount-1)=-bikker2(bikkeramount-1)}}:loop
 //        if nextureenabled=1{slilicsce(nestive)=slilicsce(nestive)+(size/2):skipperspc=skipperspc+(ax2cnt-ax2cntold)}
     //cnt2=cnt:repeat bikkeramount:if instrustical(nestive,2)+1<=cnt2+size and nestive!0 and slilicscex(cnt+1)=nestive {slilicscex(cnt+1)=0}
@@ -299,10 +309,14 @@ funcnubgetstrxcab=0
         bkaddressforcall=lpeek(programyeditforkkxdc,0x14)
         memcpy programyeditforkkxdc,fi,20,8,((code*28)+8)
         lpoke programyeditforkkxdc,0x14,bkaddressforcall
+        wpoke programyeditforkkxdc,0,wpeek(fi,code*28)
         //wpoke programyeditforkkxdc,2,code+funcnubgetstrxc+funcnubgetstrxca
         //wpoke programyeditforkkxdc,0,0xFFFF-wpeek(programyeditforkkxdc,2)
-        lpoke programy, ax2cnt,lpeek(programyeditforkkxdc,2)+code+funcnubgetstrxc+funcnubgetstrxca:ax2cnt=ax2cnt+4:funcnubgetstrxcab=funcnubgetstrxcab+1
-        lpoke formadgefunctionlbl(code)
+        lpoke programy, ax2cnt,code+funcnubgetstrxc+funcnubgetstrxca:ax2cnt=ax2cnt+4:funcnubgetstrxcab=funcnubgetstrxcab+1
+        if funcnubgetstrxcative<=code{funcnubgetstrxcative=code}
+        lpoke formadgefunctionlbl(code+funcnubgetstrxca),0,varptr(programy)+(labelforfuncgetter(code))
+        logmes "function:"+str(labelforfuncgetter(code))
+        //semilabelforfuncgetteri=semilabelforfuncgetteri+1
         swbreak
         case 2
         wpoke programy, ax2cnt-2,0x8001
@@ -380,8 +394,9 @@ funcnubgetstrxcab=0
         continue cnt + size
     loop
     //labelingistage=labeliees
-bribristringscalestock=bribristringscalestock+bribristringscale
-labelingist=labelingist+labelingistage
+funcnubgetstrxca=funcnubgetstrxca+funcnubgetstrxcative+1
+bribristringscalestock=bribristringscalestock+bribristringscale+1
+labelingist=labelingist+labelingistage+1
 varigist=varigist+varigistage+bribristringscale+1
 funcnubgetstrxca=funcnubgetstrxca+funcnubgetstrxcab
 boby=0
