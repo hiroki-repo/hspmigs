@@ -98,6 +98,7 @@ dim valimodxxxx,10,10000
 dim instrustical,10000,4
 dim labelforfuncgetter,10000
 dim semilabelforfuncgetter,10000
+semilabelforfuncgetter(0)=-1
     repeat max_cs
         c = wpeek(ax2, cnt)
         //wpoke programy,ax2cnt,c & 0x8000
@@ -125,9 +126,13 @@ dim semilabelforfuncgetter,10000
             //tp11xad=1
             nestive=nestive+1
         }
+        semilabelforfuncgetterdisable=0
         if type == 12 {
-	        semilabelforfuncgetter(semilabelforfuncgettermax)=code
-	        semilabelforfuncgettermax=semilabelforfuncgettermax+1
+	        repeat semilabelforfuncgettermax:if semilabelforfuncgetter(cnt)=code{semilabelforfuncgetterdisable=1}:loop
+	        if semilabelforfuncgetterdisable=0{
+	        	semilabelforfuncgetter(semilabelforfuncgettermax)=code
+	        	semilabelforfuncgettermax=semilabelforfuncgettermax+1
+	        }
 	    }
             //instrustical(nestive-1,0)=instrustical(nestive-1,0)+1
         //if instrustically=skip_offset and tp11xad=1{instrustically=0:nestive=nestive+1:instrustical(nestive,2)=cnt+size:skip_offset=0}else{instrustical(nestive,0)=instrustical(nestive,0)+1:instrustically=instrustically+(size/2)}
@@ -230,7 +235,7 @@ loop*/
     instructicalll=instructicalll+1
 cnt2=cnt:repeat nestivate:if valimodxxxx(1,cnt)=(cnt2+size)/2{valimodxxxx(2,cnt)=ax2cnt}:loop
 cnt2=cnt:repeat nestivate:if valimodxxxx(0,cnt)=(cnt2+size)/2{logmes str(ax2cnt)+"\n"+str(valimodxxxx(2,cnt)):bikker2(valimodxxxx(3,cnt))=((ax2cnt-valimodxxxx(2,cnt))/2):bikkerrroo=bikkerrroo+bikker2(bikkeramount):if bikker2(bikkeramount)<0{bikker2(bikkeramount)=-bikker2(bikkeramount)}:skip_offset=0:bikkeramount=bikkeramount+1}:loop
-cnt2=cnt:repeat semilabelforfuncgettermax:if lpeek(ot,(lpeek(fi,((28*semilabelforfuncgetter(cnt))+0x14))*4))=(cnt2+size)/2{labelforfuncgetter(cnt)=ax2cnt}:loop
+cnt2=cnt:repeat semilabelforfuncgettermax:if lpeek(ot,(lpeek(fi,((28*semilabelforfuncgetter(cnt))+0x14))*4))=(cnt2+size)/2{labelforfuncgetter(semilabelforfuncgetter(cnt))=ax2cnt}:loop
 //cnt2=cnt:repeat nestivate:if valimodxxxx(0,cnt)=skip_offset+((cnt2+size)/2){bikker2(bikkeramount-1)=((ax2cnt-valimodxxxx(2,cnt))/2)-(bikkerrroo/3.0)*2:bikkerrroo=bikkerrroo+bikker2(bikkeramount-1):if bikker2(bikkeramount-1)<0{bikker2(bikkeramount-1)=-bikker2(bikkeramount-1)}}:loop
 //        if nextureenabled=1{slilicsce(nestive)=slilicsce(nestive)+(size/2):skipperspc=skipperspc+(ax2cnt-ax2cntold)}
     //cnt2=cnt:repeat bikkeramount:if instrustical(nestive,2)+1<=cnt2+size and nestive!0 and slilicscex(cnt+1)=nestive {slilicscex(cnt+1)=0}
