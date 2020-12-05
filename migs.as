@@ -263,7 +263,8 @@ funcnubgetstrxcativeadded=0
 await 1
 //labeliees=0
 funcnubgetstrxcab=0
-        dupptr programyeditforkkxdcg,libptr(formadgefunc0000)+((code+funcnubgetstrxca)*28),28,2
+//        dupptr programyeditforkkxdcg,libptr(formadgefunc0000)+((code+funcnubgetstrxca)*28),28,2
+        dupptr programyeditforkkxdcg,libptr(formadgefunc0000),28,2
         programyeditforkkxdcgy=lpeek(programyeditforkkxdcg,4):cbxptrlkkkjkijj=0
     repeat max_cs
         c = wpeek(ax2, cnt)
