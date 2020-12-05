@@ -12,6 +12,7 @@
     return ret
 //#global
 #deffunc formadgeinitfunc
+programyeditforkkxdcgycucucu=0
 bribristringscalestock=0
 programyegg=0
 ldim formadgefunctionlbl,10000
@@ -102,6 +103,7 @@ dim instrustical,10000,4
 dim labelforfuncgetter,10000
 dim semilabelforfuncgetter,10000
 semilabelforfuncgetter(0)=-1
+semilabelforfuncgettermax=max_fi
     repeat max_cs
         c = wpeek(ax2, cnt)
         //wpoke programy,ax2cnt,c & 0x8000
@@ -239,7 +241,7 @@ loop*/
     instructicalll=instructicalll+1
 cnt2=cnt:repeat nestivate:if valimodxxxx(1,cnt)=(cnt2+size)/2{valimodxxxx(2,cnt)=ax2cnt}:loop
 cnt2=cnt:repeat nestivate:if valimodxxxx(0,cnt)=(cnt2+size)/2{logmes str(ax2cnt)+"\n"+str(valimodxxxx(2,cnt)):bikker2(valimodxxxx(3,cnt))=((ax2cnt-valimodxxxx(2,cnt))/2):bikkerrroo=bikkerrroo+bikker2(bikkeramount):if bikker2(bikkeramount)<0{bikker2(bikkeramount)=-bikker2(bikkeramount)}:skip_offset=0:bikkeramount=bikkeramount+1}:loop
-cnt2=cnt:repeat semilabelforfuncgettermax:if lpeek(ot,(lpeek(fi,((28*semilabelforfuncgetter(cnt))+0x14))*4))=(cnt2+size)/2{labelforfuncgetter(semilabelforfuncgetter(cnt))=ax2cnt}:loop
+cnt2=cnt:repeat (max_fi/28)/*semilabelforfuncgettermax:semilabelforfuncgetter(cnt)*/:if lpeek(ot,(lpeek(fi,((28*cnt)+0x14))*4))=(cnt2+size)/2{labelforfuncgetter(cnt)=ax2cnt}:loop
 //cnt2=cnt:repeat nestivate:if valimodxxxx(0,cnt)=skip_offset+((cnt2+size)/2){bikker2(bikkeramount-1)=((ax2cnt-valimodxxxx(2,cnt))/2)-(bikkerrroo/3.0)*2:bikkerrroo=bikkerrroo+bikker2(bikkeramount-1):if bikker2(bikkeramount-1)<0{bikker2(bikkeramount-1)=-bikker2(bikkeramount-1)}}:loop
 //        if nextureenabled=1{slilicsce(nestive)=slilicsce(nestive)+(size/2):skipperspc=skipperspc+(ax2cnt-ax2cntold)}
     //cnt2=cnt:repeat bikkeramount:if instrustical(nestive,2)+1<=cnt2+size and nestive!0 and slilicscex(cnt+1)=nestive {slilicscex(cnt+1)=0}
@@ -255,6 +257,9 @@ bikkeramount2=1
 varidforprogramyuf=0
 ax2cnt=0
 size=0
+programyeditforkkxdcgycucucuve=0
+programyeditforkkxdcgycucucuveadded=0
+funcnubgetstrxcativeadded=0
 await 1
 //labeliees=0
 funcnubgetstrxcab=0
@@ -315,7 +320,7 @@ funcnubgetstrxcab=0
         wpoke programy, ax2cnt,bikker2(bikkeramount2):ax2cnt=ax2cnt+2:bikkeramount2=bikkeramount2+1
         swbreak
         case 12
-        bkaddressforcall=l=0
+        bkaddressforcall=0
         dupptr programyeditforkkxdc,libptr(formadgefunc0000)+((code+funcnubgetstrxca)*28),28,2
         bkaddressforcall=lpeek(programyeditforkkxdc,0x14)
         //bkaddressforcall2=lpeek(programyeditforkkxdc,0x08)
@@ -330,7 +335,7 @@ funcnubgetstrxcab=0
         //wpoke programyeditforkkxdc,2,code+funcnubgetstrxc+funcnubgetstrxca
         //wpoke programyeditforkkxdc,0,0xFFFF-wpeek(programyeditforkkxdc,2)
         lpoke programy, ax2cnt,code+funcnubgetstrxc+funcnubgetstrxca:ax2cnt=ax2cnt+4:funcnubgetstrxcab=funcnubgetstrxcab+1
-        if funcnubgetstrxcative<=code{funcnubgetstrxcative=code}
+        if funcnubgetstrxcative<=code{funcnubgetstrxcative=code:funcnubgetstrxcativeadded=1}
         lpoke formadgefunctionlbl(code+funcnubgetstrxca),0,varptr(programy)+(labelforfuncgetter(code))
         logmes "function:"+str(labelforfuncgetter(code))
         //semilabelforfuncgetteri=semilabelforfuncgetteri+1
@@ -388,7 +393,8 @@ funcnubgetstrxcab=0
         varidforprogramyuf=varidforprogramyuf+1
         //(code+varigist)
         }else{*/
-        lpoke programy, ax2cnt,programyeditforkkxdcgy+code
+        lpoke programy, ax2cnt,programyeditforkkxdcgy+programyeditforkkxdcgycucucu+code
+        if programyeditforkkxdcgycucucuve<=code{programyeditforkkxdcgycucucuve=code:programyeditforkkxdcgycucucuveadded=1}
 	        ax2cnt=ax2cnt+4:cbxptrlkkkjkijj=0
 	    //}
         swbreak
@@ -416,15 +422,16 @@ funcnubgetstrxcab=0
         cnt2=cnt:repeat labeliees
         if lpeek(labelinfofortranslated(labelingist+cnt),0)=(cnt2+size)/2{lpoke labelinfofortranslated(cnt+labelingist),0,ax2cnt+varptr(programy)}
         loop
-        cnt2=cnt:repeat semilabelforfuncgettermax:if labelforfuncgetter(semilabelforfuncgetter(cnt))=ax2cnt{cbxptrlkkkjkijj=1}:loop
+        cnt2=cnt:repeat (max_fi/28)/*semilabelforfuncgettermax*/:if labelforfuncgetter(cnt)=ax2cnt{cbxptrlkkkjkijj=1/*semilabelforfuncgetter(cnt)*/}:loop
         continue cnt + size
     loop
     //labelingistage=labeliees
-funcnubgetstrxca=funcnubgetstrxca+funcnubgetstrxcative+1
-bribristringscalestock=bribristringscalestock+bribristringscale+1
-labelingist=labelingist+labelingistage+1
-varigist=varigist+varigistage+bribristringscale+1
-funcnubgetstrxca=funcnubgetstrxca+funcnubgetstrxcab
+programyeditforkkxdcgycucucu=programyeditforkkxdcgycucucu+programyeditforkkxdcgycucucuve+programyeditforkkxdcgycucucuveadded
+funcnubgetstrxca=funcnubgetstrxca+(max_fi/28)//funcnubgetstrxcative+funcnubgetstrxcativeadded
+bribristringscalestock=bribristringscalestock+bribristringscale+1//(bribristringscale!0)
+labelingist=labelingist+labelingistage+1//(labelingistage!0)
+varigist=varigist+varigistage+bribristringscale+1//((bribristringscale+varigistage)!0)
+//funcnubgetstrxca=funcnubgetstrxca+funcnubgetstrxcab+(funcnubgetstrxcab!0)
 boby=0
 boby=varptr(programy)
 boby2=*sight
