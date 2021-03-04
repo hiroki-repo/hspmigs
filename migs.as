@@ -265,7 +265,7 @@ await 1
 funcnubgetstrxcab=0
 //        dupptr programyeditforkkxdcg,libptr(formadgefunc0000)+((code+funcnubgetstrxca)*28),28,2
         dupptr programyeditforkkxdcg,libptr(formadgefunc0000),28,2
-        programyeditforkkxdcgy=lpeek(programyeditforkkxdcg,4):cbxptrlkkkjkijj=0
+        if programyeditforkkxdcgysetdataxxx=0{programyeditforkkxdcgy=lpeek(programyeditforkkxdcg,4)}:cbxptrlkkkjkijj=0:programyeditforkkxdcgysetdataxxx=0
     repeat max_cs
         c = wpeek(ax2, cnt)
         if (c&31)=0{wpoke programy,ax2cnt,c}else{wpoke programy,ax2cnt,c or 0x8000}
@@ -326,12 +326,13 @@ funcnubgetstrxcab=0
         bkaddressforcall=lpeek(programyeditforkkxdc,0x14)
         //bkaddressforcall2=lpeek(programyeditforkkxdc,0x08)
         bkaddressforcall3=wpeek(programyeditforkkxdc,0x02)
-        bkaddressforcall4=lpeek(programyeditforkkxdc,0x04)
+        //bkaddressforcall4=lpeek(programyeditforkkxdc,0x04)
         memcpy programyeditforkkxdc,fi,28,0,((code*28)+0)
         lpoke programyeditforkkxdc,0x14,bkaddressforcall
         //lpoke programyeditforkkxdc,0x08,bkaddressforcall2
         wpoke programyeditforkkxdc,0x02,bkaddressforcall3
-        lpoke programyeditforkkxdc,0x04,bkaddressforcall4
+        //lpoke programyeditforkkxdc,0x04,bkaddressforcall4
+        lpoke programyeditforkkxdc,0x04,programyeditforkkxdcgy+programyeditforkkxdcgycucucu+lpeek(programyeditforkkxdc,0x04)
         //wpoke programyeditforkkxdc,0,wpeek(fi,code*28)
         //wpoke programyeditforkkxdc,2,code+funcnubgetstrxc+funcnubgetstrxca
         //wpoke programyeditforkkxdc,0,0xFFFF-wpeek(programyeditforkkxdc,2)
@@ -70457,6 +70458,16 @@ return 0
 *formadgelabel9998
 *formadgelabel9999
 gosub *formadgelabel0000
+return
+#deffunc formadgecalldonction int prm_dcla, array prm_0, array prm_1, array prm_2, array prm_3, array prm_4, array prm_5, array prm_6, array prm_7, array prm_8, array prm_9, array prm_10, array prm_11, array prm_12, array prm_13, array prm_14
+prm_dclaab=*formadgelabel0000
+lpoke prm_dclaab,0,prm_dcla
+goto prm_dclaab
+return
+#defcfunc formadgecalldonctionc int prm_dcla, array prm_0, array prm_1, array prm_2, array prm_3, array prm_4, array prm_5, array prm_6, array prm_7, array prm_8, array prm_9, array prm_10, array prm_11, array prm_12, array prm_13, array prm_14
+prm_dclaab=*formadgelabel0000
+lpoke prm_dclaab,0,prm_dcla
+goto prm_dclaab
 return
 #global
 formadgeinitfunc
