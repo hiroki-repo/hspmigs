@@ -22,6 +22,7 @@ dim bikker2,10000
 dim bikker3,10000
 	mref hspctx, 68
 	dupptr hsphed, hspctx(0), 96
+	dupptr minfo,hspctx(209),65536,2
 	finumforaddfunc  = hsphed(15) / 28
 funcnubgetstrxca=0
 varigistage=0
@@ -323,15 +324,19 @@ funcnubgetstrxcab=0
         case 12
         bkaddressforcall=0
         dupptr programyeditforkkxdc,libptr(formadgefunc0000)+((code+funcnubgetstrxca)*28),28,2
+        dupptr programyeditforkkxdclinfo,hspctx(208)+(hspctx(210)-libptr(formadgefunc0000))+((code+funcnubgetstrxca)*28),28,2
+		dupptr hsphed, hspctx(0), 96
         bkaddressforcall=lpeek(programyeditforkkxdc,0x14)
         //bkaddressforcall2=lpeek(programyeditforkkxdc,0x08)
-        bkaddressforcall3=wpeek(programyeditforkkxdc,0x02)
+        //bkaddressforcall3=wpeek(programyeditforkkxdc,0x02)
         //bkaddressforcall4=lpeek(programyeditforkkxdc,0x04)
+        //bkaddressforcall5=wpeek(programyeditforkkxdc,0x00)
         memcpy programyeditforkkxdc,fi,28,0,((code*28)+0)
         lpoke programyeditforkkxdc,0x14,bkaddressforcall
         //lpoke programyeditforkkxdc,0x08,bkaddressforcall2
-        wpoke programyeditforkkxdc,0x02,bkaddressforcall3
+        //wpoke programyeditforkkxdc,0x02,bkaddressforcall3
         //lpoke programyeditforkkxdc,0x04,bkaddressforcall4
+        //wpoke programyeditforkkxdc,0x00,bkaddressforcall5
         lpoke programyeditforkkxdc,0x04,programyeditforkkxdcgy+programyeditforkkxdcgycucucu+lpeek(programyeditforkkxdc,0x04)
         //wpoke programyeditforkkxdc,0,wpeek(fi,code*28)
         //wpoke programyeditforkkxdc,2,code+funcnubgetstrxc+funcnubgetstrxca
@@ -340,6 +345,7 @@ funcnubgetstrxcab=0
         if funcnubgetstrxcative<=code{funcnubgetstrxcative=code:funcnubgetstrxcativeadded=1}
         lpoke formadgefunctionlbl(code+funcnubgetstrxca),0,varptr(programy)+(labelforfuncgetter(code))
         logmes "function:"+str(labelforfuncgetter(code))
+        memcpy programyeditforkkxdclinfo,programyeditforkkxdc,28,0,0
         //semilabelforfuncgetteri=semilabelforfuncgetteri+1
         swbreak
         case 2
@@ -396,6 +402,7 @@ funcnubgetstrxcab=0
         //(code+varigist)
         }else{*/
         lpoke programy, ax2cnt,programyeditforkkxdcgy+programyeditforkkxdcgycucucu+code
+        memcpy minfo,mi,8,8*(programyeditforkkxdcgy+programyeditforkkxdcgycucucu+code),8*code
         if programyeditforkkxdcgycucucuve<=code{programyeditforkkxdcgycucucuve=code:programyeditforkkxdcgycucucuveadded=1}
 	        ax2cnt=ax2cnt+4:cbxptrlkkkjkijj=0
 	    //}
