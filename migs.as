@@ -56,6 +56,7 @@ gosub sgt*/
 return
 //stop
 #defcfunc _faddproc str prm_1
+gosub *formadgelabeladdrget
 prm_1in=""+prm_1
 exist prm_1in
 strsize2=strsize
@@ -226,6 +227,9 @@ case 3
 bribristringscale=bribristringscale+1
 ax2cnt=ax2cnt+4
 swbreak
+case 5
+ax2cnt=ax2cnt+4
+swbreak
 default
 ax2cnt=ax2cnt+4
 swbreak
@@ -303,6 +307,9 @@ funcnubgetstrxcab=0
         if varigistage<=code{varigistage=code}
         swbreak
         case 7
+        /*dupptr formadgelabeladdrdata,lpeek(formadgelabeladdr,0),256,2
+        if wpeek(formadgelabeladdrdata,4) &0x8000{formadgelabeladdrptpt=lpeek(formadgelabeladdrdata,6)}else{formadgelabeladdrptpt=wpeek(formadgelabeladdrdata,6)}
+        lpoke programy,ax2cnt,formadgelabeladdrptpt+code:ax2cnt=ax2cnt+4*/
         wpoke programy,ax2cnt-2,(c &0x7000)or (0x8000 or 1):if wpeek(saladeuyunidataforfm,4) &0x8000{suyni=lpeek(saladeuyunidataforfm,6)}else{suyni=wpeek(saladeuyunidataforfm,6)}:lpoke programy, ax2cnt,suyni:ax2cnt=ax2cnt+4:lpoke programy, ax2cnt,0x00280000:ax2cnt=ax2cnt+4:wpoke programy, ax2cnt,0x8004:ax2cnt=ax2cnt+2:lpoke programy, ax2cnt,code+labelingist:ax2cnt=ax2cnt+4:lpoke programy, ax2cnt,0x00290000:ax2cnt=ax2cnt+4
         //dupptr labelliesdumped@,varptr(programy)+ax2cnt-20,256
         //dialog suyni
@@ -60463,6 +60470,11 @@ return 0
 #defcfunc formadgefunc9999 array prm_0, array prm_1, array prm_2, array prm_3, array prm_4, array prm_5, array prm_6, array prm_7, array prm_8, array prm_9 
 goto formadgefunctionlbl(9999)
 return 0
+
+*formadgelabeladdrget
+formadgelabeladdr=*formadgelabel0000
+return
+
 
 *formadgelabel0000
 *formadgelabel0001
