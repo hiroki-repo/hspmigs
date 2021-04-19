@@ -60475,8 +60475,8 @@ return 0
 formadgelabeladdr=*formadgelabel0000
 return
 
-
 *formadgelabel0000
+/*
 *formadgelabel0001
 *formadgelabel0002
 *formadgelabel0003
@@ -70476,8 +70476,10 @@ return
 *formadgelabel9997
 *formadgelabel9998
 *formadgelabel9999
+*/
 gosub *formadgelabel0000
 return
+
 #deffunc formadgecalldonction int prm_dcla, array prm_0, array prm_1, array prm_2, array prm_3, array prm_4, array prm_5, array prm_6, array prm_7, array prm_8, array prm_9, array prm_10, array prm_11, array prm_12, array prm_13, array prm_14
 prm_dclaab=*formadgelabel0000
 lpoke prm_dclaab,0,prm_dcla
