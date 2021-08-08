@@ -22,7 +22,7 @@ dim bikker2,10000
 dim bikker3,10000
 	mref hspctx, 68
 	dupptr hsphed, hspctx(0), 96
-	dupptr minfo,hspctx(209),65536,2
+	dupptr minfo,hspctx(209),hspctx(210),2
 	finumforaddfunc  = hsphed(15) / 28
 funcnubgetstrxca=0
 varigistage=0
@@ -53,26 +53,6 @@ poke sgts,14,2
 gosub sgt
 poke sgts,14,3
 gosub sgt*/
-ldim secleveltraptr,32
-repeat 32:secleveltraptr(cnt)=*secleveltraptr_dfl:loop
-secleveltraptr(0)=*secleveltraptr_0
-secleveltraptr(1)=*secleveltraptr_1
-secleveltraptr(2)=*secleveltraptr_2
-secleveltraptr(3)=*secleveltraptr_3
-secleveltraptr(5)=*secleveltraptr_5
-secleveltraptr(7)=*secleveltraptr_7
-secleveltraptr(11)=*secleveltraptr_11
-secleveltraptr(12)=*secleveltraptr_12
-ldim thdleveltraptr,32
-repeat 32:thdleveltraptr(cnt)=*thdleveltraptr_dfl:loop
-thdleveltraptr(0)=*thdleveltraptr_0
-thdleveltraptr(1)=*thdleveltraptr_1
-thdleveltraptr(2)=*thdleveltraptr_2
-thdleveltraptr(3)=*thdleveltraptr_3
-thdleveltraptr(5)=*thdleveltraptr_5
-thdleveltraptr(7)=*thdleveltraptr_7
-thdleveltraptr(11)=*thdleveltraptr_11
-thdleveltraptr(12)=*thdleveltraptr_12
 return
 //stop
 #defcfunc _faddproc str prm_1
@@ -206,29 +186,20 @@ labeliees=0
 //cnt2=cnt:repeat bikkeramount:if bikker2(cnt+1)<=-1{bikker2(cnt+1)=(ax2cnt-bikker2(cnt))/2}:if bikker(cnt+1)=(cnt2)/2{bikker2(cnt+1)=(cnt2-bikker3(cnt+1))}:loop
 //:loop
 //cnt2=cnt:if bikker(bikkeramount-1)=cnt2/2{bikker2(bikkeramount)=(cnt2-bikker3(bikkeramount))}
-gosub secleveltraptr(type & 31)
-goto *secleveltraptr_bps
-//switch type & 31
-*secleveltraptr_0
-//case 0
+switch type & 31
+case 0
 if c&8000{ax2cnt=ax2cnt+4}else{ax2cnt=ax2cnt+2}
-return
-//swbreak
-*secleveltraptr_1
-//case 1
+swbreak
+case 1
 ax2cnt=ax2cnt+4
-return
-//swbreak
-*secleveltraptr_7
-//case 7
+swbreak
+case 7
 lpoke labelinfofortranslated(code+labelingist),0,lpeek(ot,code*4)
 //labeliees=labeliees+1
         if labeliees<=code{labeliees=code}
 ax2cnt=ax2cnt+18
-return
-//swbreak
-*secleveltraptr_11
-//case 11
+swbreak
+case 11
 type11checkec=1
 //            nextureenabled=1
 //            codeforaddx=code
@@ -247,33 +218,22 @@ slilicscex(bikkeramount)=nestive+1*/
 //bikkeramount=bikkeramount+1
 ax2cnt=ax2cnt+6
 nestive=nestive+1
-return
-//swbreak
-*secleveltraptr_12
-//case 12
+swbreak
+case 12
 ax2cnt=ax2cnt+4
-return
-//swbreak
-*secleveltraptr_2
-//case 2
-*secleveltraptr_3
-//case 3
+swbreak
+case 2
+case 3
 bribristringscale=bribristringscale+1
 ax2cnt=ax2cnt+4
-return
-//swbreak
-*secleveltraptr_5
-//case 5
+swbreak
+case 5
 ax2cnt=ax2cnt+4
-return
-//swbreak
-*secleveltraptr_dfl
-//default
+swbreak
+default
 ax2cnt=ax2cnt+4
-return
-//swbreak
-//swend
-*secleveltraptr_bps
+swbreak
+swend
 //cnt2=cnt:repeat bikkeramount:if bikker(cnt)=cnt2/2{bikker2(cnt)=(ax2cnt-bikker3(cnt))}:loop
 
         //slilicsce(nestive)=slilicsce(nestive)+size//slilicsce+(ax2cnt-slilicscex)
@@ -337,23 +297,16 @@ funcnubgetstrxcab=0
         //lopfist2bt+code
         //if type=1{/*if c & 0x8000 {*/
         //dialog type
-		gosub thdleveltraptr(type & 31)
-		goto *thdleveltraptr_bps
-        //switch type & 31
-        //case 0
-*thdleveltraptr_0
+        switch type & 31
+        case 0
         if c&8000{lpoke programy,ax2cnt,code:ax2cnt=ax2cnt+4}else{wpoke programy,ax2cnt,code:ax2cnt=ax2cnt+2}
-        return
-        //swbreak
-*thdleveltraptr_1
-        //case 1
+        swbreak
+        case 1
         lpoke programy, ax2cnt,lopfist2bt+code+varigist+bribristringscale:ax2cnt=ax2cnt+4
         logmes "var(1):"+str(code+varigist+bribristringscale)
         if varigistage<=code{varigistage=code}
-        return
-        //swbreak
-*thdleveltraptr_7
-        //case 7
+        swbreak
+        case 7
         /*dupptr formadgelabeladdrdata,lpeek(formadgelabeladdr,0),256,2
         if wpeek(formadgelabeladdrdata,4) &0x8000{formadgelabeladdrptpt=lpeek(formadgelabeladdrdata,6)}else{formadgelabeladdrptpt=wpeek(formadgelabeladdrdata,6)}
         lpoke programy,ax2cnt,formadgelabeladdrptpt+code:ax2cnt=ax2cnt+4*/
@@ -363,10 +316,8 @@ funcnubgetstrxcab=0
         //lpoke labelinfofortranslated(code+labelingist),0,code+varptr(programy)
         //labeliees=labeliees+1
         if labelingistage<=code{labelingistage=code}
-        return
-        //swbreak
-*thdleveltraptr_11
-        //case 11
+        swbreak
+        case 11
         //wpoke programy, ax2cnt-2,c//:ax2cnt=ax2cnt+2
         /*if c & 0x8000{
         lpoke programy, ax2cnt,code:ax2cnt=ax2cnt+4
@@ -376,10 +327,8 @@ funcnubgetstrxcab=0
         lpoke programy, ax2cnt,code:ax2cnt=ax2cnt+4
         //dialog bikker2(bikkeramount2)
         wpoke programy, ax2cnt,bikker2(bikkeramount2):ax2cnt=ax2cnt+2:bikkeramount2=bikkeramount2+1
-        return
-        //swbreak
-*thdleveltraptr_12
-        //case 12
+        swbreak
+        case 12
         bkaddressforcall=0
         dupptr programyeditforkkxdc,libptr(formadgefunc0000)+((code+funcnubgetstrxca)*28),28,2
         dupptr programyeditforkkxdclinfo,hspctx(208)+(hspctx(210)-libptr(formadgefunc0000))+((code+funcnubgetstrxca)*28),28,2
@@ -405,10 +354,8 @@ funcnubgetstrxcab=0
         logmes "function:"+str(labelforfuncgetter(code))
         memcpy programyeditforkkxdclinfo,programyeditforkkxdc,28,0,0
         //semilabelforfuncgetteri=semilabelforfuncgetteri+1
-        return
-        //swbreak
-*thdleveltraptr_2
-        //case 2
+        swbreak
+        case 2
         wpoke programy, ax2cnt-2,0x8001
         lpoke programy, ax2cnt,lopfist2bt+varidforprogramyuf+varigist:ax2cnt=ax2cnt+4
         logmes "var(2):"+str(varidforprogramyuf+varigist)
@@ -424,10 +371,8 @@ funcnubgetstrxcab=0
         gosub *formadgevarptrset
         varidforprogramyuf=varidforprogramyuf+1
         //(code+varigist)
-        return
-        //swbreak
-*thdleveltraptr_3
-        //case 3
+        swbreak
+        case 3
         wpoke programy, ax2cnt-2,0x8001
         lpoke programy, ax2cnt,lopfist2bt+varidforprogramyuf+varigist:ax2cnt=ax2cnt+4
         logmes "var(3):"+str(varidforprogramyuf+varigist)
@@ -443,10 +388,8 @@ funcnubgetstrxcab=0
         gosub *formadgevarptrset
         varidforprogramyuf=varidforprogramyuf+1
         //(code+varigist)
-        return
-        //swbreak
-*thdleveltraptr_5
-        //case 5
+        swbreak
+        case 5
         /*if cbxptrlkkkjkijj=0{
         wpoke programy, ax2cnt-2,0x8001
         lpoke programy, ax2cnt,lopfist2bt+varidforprogramyuf+varigist:ax2cnt=ax2cnt+4
@@ -470,17 +413,13 @@ funcnubgetstrxcab=0
         if programyeditforkkxdcgycucucuve<=code{programyeditforkkxdcgycucucuve=code:programyeditforkkxdcgycucucuveadded=1}
 	        ax2cnt=ax2cnt+4:cbxptrlkkkjkijj=0
 	    //}
-	    return
-        //swbreak
+        swbreak
         /*case 15
         if code=2{cbxptrlkkkjkijj=0}*/
-*thdleveltraptr_dfl
-        //default
+        default
         lpoke programy, ax2cnt,code:ax2cnt=ax2cnt+4
-        return
-        //swbreak
-        //swend
-*thdleveltraptr_bps
+        swbreak
+        swend
         //}//}else{wpoke programy, ax2cnt,lopfist2bt+code:ax2cnt=ax2cnt+2}}
         /*output += typenames.type + "\t" // タイチE
         output += str(code) + "\t" // 値
@@ -60536,8 +60475,8 @@ return 0
 formadgelabeladdr=*formadgelabel0000
 return
 
+
 *formadgelabel0000
-/*
 *formadgelabel0001
 *formadgelabel0002
 *formadgelabel0003
@@ -70537,10 +70476,8 @@ return
 *formadgelabel9997
 *formadgelabel9998
 *formadgelabel9999
-*/
 gosub *formadgelabel0000
 return
-
 #deffunc formadgecalldonction int prm_dcla, array prm_0, array prm_1, array prm_2, array prm_3, array prm_4, array prm_5, array prm_6, array prm_7, array prm_8, array prm_9, array prm_10, array prm_11, array prm_12, array prm_13, array prm_14
 prm_dclaab=*formadgelabel0000
 lpoke prm_dclaab,0,prm_dcla
