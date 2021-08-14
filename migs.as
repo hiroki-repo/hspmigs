@@ -356,7 +356,7 @@ funcnubgetstrxcab=0
         //semilabelforfuncgetteri=semilabelforfuncgetteri+1
         swbreak
         case 2
-        wpoke programy, ax2cnt-2,0x8001
+        wpoke programy, ax2cnt-2,0x8001|(c&0x6000)
         lpoke programy, ax2cnt,lopfist2bt+varidforprogramyuf+varigist:ax2cnt=ax2cnt+4
         logmes "var(2):"+str(varidforprogramyuf+varigist)
         formadgevalsetid=varidforprogramyuf+varigist
